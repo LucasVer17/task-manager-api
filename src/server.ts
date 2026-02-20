@@ -6,7 +6,6 @@ import { adminJs, adminRouter } from './adminjs';
 const app = express();
 
 app.use(express.static('public'));
-
 app.use(adminJs.options.rootPath, adminRouter);
 
 const PORT = process.env.PORT || 3000;
