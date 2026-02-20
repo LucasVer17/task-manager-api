@@ -1,12 +1,13 @@
 import 'dotenv/config';
 import express from 'express';
 import { sequelize } from './database';
+import { adminJs, adminRouter } from './adminjs';
 
 const app = express();
 
-app.get('/', (req, res) => {
-    res.send('Hello, World!');  
-});
+app.use(express.static('public'));
+
+app.use(adminJs.options.rootPath, adminRouter);
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, async () => {
